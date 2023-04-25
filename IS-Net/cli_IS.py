@@ -80,8 +80,7 @@ input_folder = args.input_folder
 output_folder = args.output_folder
 
 # Get the list of image files from the input folder
-input_list = glob.glob(os.path.join(input_folder, '*'))
-input_list.sort(key=natural_keys)
+input_list = sorted(glob.glob(os.path.join(input_folder, '*')))
 
 print(input_list)
 for image_file in input_list:
