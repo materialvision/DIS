@@ -81,8 +81,9 @@ output_folder = args.output_folder
 
 # Get the list of image files from the input folder
 input_list = glob.glob(os.path.join(input_folder, '*'))
-
+print(input_list)
 for image_file in input_list:
+    print("in the list")
     im = io.imread(image_file)/255
     w,h,_ = im.shape
     if len(im.shape) < 3:
@@ -104,4 +105,5 @@ for image_file in input_list:
     im_pred = (im_pred-mi)/(ma-mi)
     im_result = im_pred.to('cpu').detach().numpy().copy()
     #io.imsave(os.path.join(result_folder,os.path.basename(image_file)), im_result)
+    print("save")
     save_output(os.path.join(input_folder,os.path.basename(image_file)),im_result,output_folder)
